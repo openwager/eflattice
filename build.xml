@@ -1,10 +1,10 @@
 <?xml version="1.0" ?>
 
-<project name="lattice" default="help" basedir="." xmlns:artifact="antlib:org.apache.maven.artifact.ant" >
+<project name="eflattice" default="help" basedir="." xmlns:artifact="antlib:org.apache.maven.artifact.ant" >
 
 	<!-- Load in their environment-specific propeties -->
 
-	<property file="${user.home}/user.properties" />
+	<property file="${user.home}/build.properties" />
 	<property file="config.properties" />
 
 	<include file="build-repos.xml" />
@@ -75,9 +75,8 @@ Available targets:
 		   javadocFilesetId="javadoc.dependency.fileset" 
 		   versionsId="dependency.versions" useScope="runtime"
 		>
-
-		  <dependency groupId="log4j" artifactId="log4j" version="${log4j.version}" />
-		  <dependency groupId="org.testng" artifactId="testng" version="${testng.version}" />
+		  <dependency groupId="${log4j.group}" artifactId="${log4j.artifact}" version="${log4j.version}" />
+		  <dependency groupId="${testng.group}" artifactId="${testng.artifact}" version="${testng.version}" />
 		  <dependency groupId="${efcore.group}" artifactId="${efcore.artifact}" version="${efcore.version}" />
 		</artifact:dependencies>
 		<copy todir="${lib.dir}">
@@ -196,7 +195,7 @@ Available targets:
 	<target name="maven-global-snapshot" depends="maven-local" if="snapshot">
 		<echo>Deploying to SNAPSHOT</echo>
 		<artifact:deploy file="${target.dir}/${output}.jar">
-			<remoteRepository refid="makingfun.snapshots" />
+			<remoteRepository refid="etherfirma.snapshots" />
 			<pom refid="mypom"/>
 			<attach file="${target.dir}/${output}-sources.jar" type="jar" classifier="sources"/>
 			<attach file="${target.dir}/${output}-javadoc.jar" type="jar" classifier="javadoc"/>
@@ -208,7 +207,7 @@ Available targets:
 	<target name="maven-global-release" depends="maven-local" unless="snapshot" >
 		<echo>Deploying to RELEASE</echo>
 		<artifact:deploy file="${target.dir}/${output}.jar">
-			<remoteRepository refid="makingfun.releases" />
+			<remoteRepository refid="etherfirma.releases" />
 			<pom refid="mypom"/>
 			<attach file="${target.dir}/${output}-sources.jar" type="jar" classifier="sources"/>
 			<attach file="${target.dir}/${output}-javadoc.jar" type="jar" classifier="javadoc"/>
