@@ -14,8 +14,8 @@ import com.lattice.validate.*;
 @Target (ElementType.FIELD)
 public @interface CustomFieldValidation
 {
-	@SuppressWarnings ("unchecked")
-    Class<? extends FieldValidator> [] classes (); 
+	@SuppressWarnings("rawtypes")
+	Class<? extends FieldValidator> [] classes (); 
 }
 
 // EOF

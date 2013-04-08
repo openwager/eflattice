@@ -9,7 +9,7 @@ import java.util.*;
  * @param <OwnerType>
  */
 
-@SuppressWarnings({ "serial", "unchecked" })
+@SuppressWarnings({ "serial" })
 public class CollectionValidator<OwnerType>
 	extends FieldValidator<OwnerType, Collection>
 {
