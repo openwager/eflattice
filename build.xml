@@ -75,7 +75,11 @@ Available targets:
 		   javadocFilesetId="javadoc.dependency.fileset" 
 		   versionsId="dependency.versions" useScope="runtime"
 		>
-		  <dependency groupId="${log4j.group}" artifactId="${log4j.artifact}" version="${log4j.version}" />
+			<remoteRepository refid="openwager.snapshots" />
+			<remoteRepository refid="openwager.thirdparty" />
+			<remoteRepository refid="openwager.releases" />
+
+				<dependency groupId="${log4j.group}" artifactId="${log4j.artifact}" version="${log4j.version}" />
 		  <dependency groupId="${testng.group}" artifactId="${testng.artifact}" version="${testng.version}" />
 		  <dependency groupId="${efcore.group}" artifactId="${efcore.artifact}" version="${efcore.version}" />
 		</artifact:dependencies>
